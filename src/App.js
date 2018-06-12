@@ -3,6 +3,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import { RoomList } from './components/RoomList.js';
 import { MessageList } from './components/MessageList.js';
+import { User } from './components/User.js';
 
 
 var config = {
@@ -21,7 +22,14 @@ class App extends Component {
     this.state = {
       activeRoom: null,
       activeRoomName: null,
-    }
+      user: null
+    };
+  }
+
+  setUser(username) {
+    this.setState({
+      user: username
+    })
   }
 
   handleRoomClick(e) {
@@ -47,6 +55,12 @@ class App extends Component {
           />
         </nav>
         <main>
+          <User
+            firebase={ firebase }
+            user = {this.state.user}
+            setUser = {(username) => this.setUser(username)}
+          />
+          <h1>{this.state.activeRoomName || "Select A Room"}</h1>
           <MessageList
             firebase={ firebase }
             activeRoom={this.state.activeRoom}

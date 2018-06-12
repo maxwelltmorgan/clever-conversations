@@ -30,10 +30,6 @@ export class MessageList extends Component{
 
     return (
       <section className="message-list">
-        <div className="active-room-name">
-          <h3>{this.props.activeRoomName}</h3>
-        </div>
-
         <div className="messages">
           <ul>
             {

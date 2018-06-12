@@ -55,7 +55,7 @@ export class RoomList extends Component {
       <div>
         {this.state.rooms.map((room, index) => {
           return (
-            <p className={room.key} id={index} key={room.key} data-name={room.name} onClick={(e) => this.props.handleRoomClick(e)}>{room.val}</p>
+            <p className={room.key} id={index} key={room.key} data-name={room.val} onClick={(e) => this.props.handleRoomClick(e)}>{room.val}</p>
           )
         })}
       </div>
