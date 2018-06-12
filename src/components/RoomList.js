@@ -21,7 +21,7 @@ export class RoomList extends Component {
   }
 
   handleRoomClick(index) {
-    console.log("handleRoomClick(): ", this.state.rooms[index]);
+    this.props.activeRoom(this.state.rooms[index].val)
   }
 
   handleNewRoomChange(e) {
@@ -55,7 +55,7 @@ export class RoomList extends Component {
       <div>
         {this.state.rooms.map((room, index) => {
           return (
-            <p key={room.key} onClick={() => this.handleRoomClick(index)}>{room.val}</p>
+            <p className={room.key} id={index} key={room.key} data-name={room.name} onClick={(e) => this.props.handleRoomClick(e)}>{room.val}</p>
           )
         })}
       </div>
