@@ -50,6 +50,7 @@ class App extends Component {
           <RoomList
             firebase={ firebase }
             activeRoom = {this.state.activeRoom}
+            user = {this.state.user}
             activeRoomName = {this.state.activeRoomName}
             handleRoomClick = {(e) => this.handleRoomClick(e)}
           />
@@ -64,6 +65,7 @@ class App extends Component {
           <MessageList
             firebase={ firebase }
             activeRoom={this.state.activeRoom}
+            user = {this.state.user}
             activeRoomName={this.state.activeRoomName}
           />
         </main>
