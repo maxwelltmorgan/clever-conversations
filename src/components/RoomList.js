@@ -18,6 +18,10 @@ export class RoomList extends Component {
       }
       this.setState({ rooms: this.state.rooms.concat( room ) })
     });
+
+    this.roomsRef.on('child_removed', snapshot  => {
+      this.setState({ rooms: this.state.rooms.filter( room => room.key !== snapshot.key )  })
+    });
   }
 
   handleRoomClick(index) {
@@ -41,6 +45,10 @@ export class RoomList extends Component {
     console.log("add, state:", this.state);
   }
 
+  removeRoom(room) {
+    this.roomsRef.child(room.key).remove();
+  }
+
   render() {
     return (
       <div id="room">
@@ -55,7 +63,10 @@ export class RoomList extends Component {
       <div>
         {this.state.rooms.map((room, index) => {
           return (
-            <p className={room.key} id={index} key={room.key} data-name={room.val} onClick={(e) => this.props.handleRoomClick(e)}>{room.val}</p>
+            <li className={room.key} id={index} key={room.key} data-name={room.val} onClick={(e) => this.props.handleRoomClick(e)}>
+              {room.val}
+              <button onClick={() => this.removeRoom(room)}>Remove</button>
+            </li>
           )
         })}
       </div>
