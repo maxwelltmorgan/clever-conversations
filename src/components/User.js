@@ -3,44 +3,41 @@ import React, { Component } from 'react';
 export class User extends Component {
   constructor(props) {
     super(props);
-      this.signIn = this.signIn.bind(this);
-      this.signOut = this.signOut.bind(this);
+    this.signIn = this.signIn.bind(this);
+    this.signOut = this.signOut.bind(this);
   }
 
-  componentDidMount() {
-    this.props.firebase.auth().onAuthStateChanged( user => {
-      this.props.setUser(user);
-    });
+signIn() {
+  const provider = new this.props.firebase.auth.GoogleAuthProvider();
+  this.props.firebase.auth().signInWithPopup(provider).then((result) => {
+    const user = result.user;
+    this.props.setUser(user);
+  });
 }
 
-  signIn(e) {
-    e.preventDefault();
-    const provider = new this.props.firebase.auth.GoogleAuthProvider();
-    this.props.firebase.auth().signInWithPopup( provider );
-  }
+signOut() {
+  this.props.firebase.auth().signOut().then(() => {
+    this.props.setUser("");
+  });
+  alert("Goodbye!");
+}
 
-  signOut(e) {
-    e.preventDefault();
-    this.props.firebase.auth().signOut();
-    alert("Goodbye!");
-  }
+componentDidMount() {
+  this.props.firebase.auth().onAuthStateChanged(user => {
+    this.props.setUser(user);
+  });
+}
 
   render() {
-    return (
-      <section className="auth-buttons">
-        <div className="username-display">
-          <h3>Welcome, </h3>
-          <h3> {this.props.user === null ? "Guest" : this.props.user.displayName} </h3>
-        </div>
-        <div className="sign-in">
-          <button id="sign-in-button" onClick={this.signIn}>Sign In</button>
-        </div>
-        <div className="sign-out">
-          <button id="sign-in-button" onClick={this.signOut}>Sign Out</button>
-        </div>
-      </section>
+    return(
+      <div>
+        <h3>Welcome, {this.props.welcome}</h3>
+        { this.props.welcome === "Guest" ?
+          <button onClick={this.signIn}>Sign In</button>
+          :
+          <button onClick={this.signOut}>Sign Out</button>
+        }
+      </div>
     )
   }
 }
-
-export default User;

@@ -18,56 +18,39 @@ firebase.initializeApp(config);
 
 class App extends Component {
   constructor(props) {
-    super();
-    this.state = {
-      activeRoom: null,
-      activeRoomName: null,
-      user: null
-    };
+    super(props);
+    this.state = {activeRoom: "", user: ""};
+    this.activeRoom = this.activeRoom.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
-  setUser(username) {
-    this.setState({
-      user: username
-    })
-  }
+setUser(user) {
+  this.setState({ user: user });
+}
 
-  handleRoomClick(e) {
-    this.setState({
-      activeRoom: e.target.className,
-      activeRoomName: e.target.dataset.name
-    });
-  }
+activeRoom(room) {
+  this.setState({ activeRoom: room });
+}
 
   render() {
+    const showMessages = this.state.activeRoom;
+    const currentUser = this.state.user === null ? "Guest" : this.state.user.displayName;
+
     return (
       <section id='page'>
         <header>
           <h1>Blah Blah</h1>
         </header>
         <nav>
-          <h2>Chat Rooms</h2>
-          <RoomList
-            firebase={ firebase }
-            activeRoom = {this.state.activeRoom}
-            user = {this.state.user}
-            activeRoomName = {this.state.activeRoomName}
-            handleRoomClick = {(e) => this.handleRoomClick(e)}
-          />
+          <RoomList firebase={firebase} activeRoom={this.activeRoom}/>
         </nav>
         <main>
-          <User
-            firebase={ firebase }
-            user = {this.state.user}
-            setUser = {(username) => this.setUser(username)}
-          />
-          <h1>{this.state.activeRoomName || "Select A Room"}</h1>
-          <MessageList
-            firebase={ firebase }
-            activeRoom={this.state.activeRoom}
-            user = {this.state.user}
-            activeRoomName={this.state.activeRoomName}
-          />
+          <User firebase={firebase} setUser={this.setUser} welcome={currentUser} />
+          <h1>{this.state.activeRoom.title || "Select Room"}</h1>
+          { showMessages ?
+            <MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={this.state.user.displayName} />
+            : null
+          }
         </main>
         <footer>
         </footer>
