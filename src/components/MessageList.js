@@ -7,7 +7,6 @@ export class MessageList extends Component {
         username: "",
         content: "",
         sentAt: "",
-        roomId: "",
         messages: []
       };
       this.handleChange = this.handleChange.bind(this);
@@ -19,8 +18,7 @@ export class MessageList extends Component {
     this.setState({
       username: this.props.user,
       content: e.target.value,
-      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-      roomId: this.props.activeRoom
+      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
     });
   }
 
@@ -31,7 +29,6 @@ export class MessageList extends Component {
       username: this.state.username,
       content: this.state.content,
       sentAt: this.state.sentAt,
-      roomId: this.state.roomId
     });
     this.setState({ username: "", content: "", sentAt: "", roomId: "" });
   }
