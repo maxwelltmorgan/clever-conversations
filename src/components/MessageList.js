@@ -106,6 +106,7 @@ export class MessageList extends Component {
             :
             <div>
               <h3>{message.content}</h3>
+              <h4>{message.sentAt}</h4>
               <button onClick={() => this.setState({toEdit: message.key})}>Edit</button>
             </div>
           }
