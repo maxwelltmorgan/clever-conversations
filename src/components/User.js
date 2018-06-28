@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+import '.././styles/User.css';
 
 export class User extends Component {
   constructor(props) {
@@ -30,12 +32,12 @@ componentDidMount() {
 
   render() {
     return(
-      <div>
-        <h3>Welcome, {this.props.welcome}</h3>
+      <div className="log">
+        <p>{this.props.welcome}</p>
         { this.props.welcome === "Guest" ?
-          <button onClick={this.signIn}>Sign In</button>
+          <Button bsStyle="danger" bsSize="small" onClick={this.signIn}>Sign In</Button>
           :
-          <button onClick={this.signOut}>Sign Out</button>
+          <Button bsStyle="primary" bsSize="small" onClick={this.signOut}>Sign Out</Button>
         }
       </div>
     )

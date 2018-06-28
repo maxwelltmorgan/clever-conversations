@@ -1,29 +1,20 @@
-#page {
-  display: grid;
-  width: 100%;
-  min-height: 100vh;
-  grid-template: [header-left] "head head" 100px [header-right]
-                 [main-left]   "nav  main" 1fr  [main-right]
-                 [footer-left] "nav  foot" 60px [footer-right]
-                 / 250px 1fr;
+.container {
+  min-width: 100%;
 }
 
-header {
-  grid-area: head;
-  background-color: lightblue;
+.jumbotron {
+  margin-top: 120px;
 }
 
-nav {
-  grid-area: nav;
-  background-color: dodgerblue;
+.content {
+  min-height: 60vh;
 }
 
-main {
-  grid-area: main;
-  background-color: lightgrey;
+.aside {
+  background-color: #222;
+  color: white;
 }
 
-footer {
-  grid-area: foot;
-  background-color: limegreen;
+.main {
+  background-color: #92bbf2;
 }

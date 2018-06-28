@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
+//import { PageHeader } from 'react-bootstrap';
 import { RoomList } from './components/RoomList.js';
 import { MessageList } from './components/MessageList.js';
 import { User } from './components/User.js';
+import { Grid, Row, Col, Navbar, Jumbotron } from 'react-bootstrap';
 
 
 var config = {
@@ -37,23 +39,36 @@ activeRoom(room) {
     const currentUser = this.state.user === null ? "Guest" : this.state.user.displayName;
 
     return (
-      <section id='page'>
-        <header>
-          <h1>Blah Blah</h1>
-        </header>
-        <nav>
-          <RoomList firebase={firebase} activeRoom={this.activeRoom}/>
-        </nav>
-        <main>
-          <User firebase={firebase} setUser={this.setUser} welcome={currentUser} />
-          <h1>{this.state.activeRoom.title || "Select Room"}</h1>
-          { showMessages ?
-            <MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={this.state.user.displayName} />
-            : null
-          }
-        </main>
-        <footer>
-        </footer>
+      <section className="page container">
+        <Jumbotron bsClass="jumbotron">
+          <h1>clever conversations</h1>
+          <p>Sign in up top. Select a room or create a new one down below.  Start a lively exchange.</p>
+        </Jumbotron>
+        <Navbar inverse fixedTop>
+          <Navbar.Brand>
+            <div>
+              <img src='assets/message.png' alt='logo' className='logo' height='150'/>
+            </div>
+          </Navbar.Brand>
+          <Navbar.Text>
+            <User firebase={firebase} setUser={this.setUser} welcome={currentUser} />
+          </Navbar.Text>
+        </Navbar>
+        <Grid fluid className="grid">
+          <Row className="content">
+            <Col sm={3} className="aside">
+              <RoomList firebase={firebase} activeRoom={this.activeRoom}/>
+            </Col>
+            <Col sm={9} className="main">
+
+              <h1>{this.state.activeRoom.title || "Select Room"}</h1>
+              { showMessages ?
+                <MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={this.state.user.displayName} />
+                : null
+              }
+            </Col>
+          </Row>
+        </Grid>
       </section>
     );
   }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+import '.././styles/RoomList.css';
 
 export class RoomList extends Component {
   constructor(props) {
@@ -80,8 +82,8 @@ export class RoomList extends Component {
         :
         <div>
           <h3 onClick={(e) => this.selectRoom(room, e)}>{room.title}</h3>
-          <button onClick={() => this.deleteRoom(room.key)}>Remove</button>
-          <button onClick={() => this.setState({toEdit: room.key})}>Edit</button>
+          <Button bsStyle="primary" bsSize="xsmall" onClick={() => this.setState({toEdit: room.key})}>Edit</Button>
+          <Button bsStyle="danger" bsSize="xsmall" onClick={() => this.deleteRoom(room.key)}>Remove</Button>
         </div>
         }
       </li>
@@ -89,8 +91,9 @@ export class RoomList extends Component {
 
     return(
       <div>
-        <div>{roomForm}</div>
+        <h3>chatrooms</h3>
         <ul>{roomList}</ul>
+        <div>{roomForm}</div>
       </div>
     );
   }
