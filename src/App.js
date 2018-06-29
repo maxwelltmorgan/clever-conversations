@@ -42,7 +42,7 @@ activeRoom(room) {
       <section className="page container">
         <Jumbotron bsClass="jumbotron">
           <h1>clever conversations</h1>
-          <p>Sign in up top. Select a room or create a new one down below.  Start a lively exchange.</p>
+          <p>Sign in up top. Select a room or create a new one.  Start a lively exchange.</p>
         </Jumbotron>
         <Navbar inverse fixedTop>
           <Navbar.Brand>

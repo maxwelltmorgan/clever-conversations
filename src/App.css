@@ -11,10 +11,12 @@
 }
 
 .aside {
-  background-color: #222;
+  background-color: #5B9BD5;
   color: white;
+  border-radius: 5px 0 0 5px;
 }
 
 .main {
-  background-color: #92bbf2;
+  background-color: #F8F8F8;
+  border-radius: 0 5px 5px 0;
 }

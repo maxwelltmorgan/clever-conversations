@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, FormGroup, InputGroup, FormControl } from 'react-bootstrap';
 import '.././styles/RoomList.css';
 
 export class RoomList extends Component {
@@ -35,9 +35,19 @@ export class RoomList extends Component {
   editRoom(room) {
     const editRoom = (
       <form onSubmit={this.updateRoom}>
-        <input type="text" defaultValue={room.title} ref={(input) => this.input = input}/>
-        <input type="submit" value="Update" />
-        <button type="button" onClick={() => this.setState({toEdit: ""})}>Cancel</button>
+        <FormGroup>
+          <InputGroup>
+            <FormControl type="text" defaultValue={room.title} ref={(input) => this.input = input}/>
+            <InputGroup.Button>
+              <Button bsStyle="info" type="submit" alt="update">
+                <i className="edit">edit</i>
+              </Button>
+              <Button bsStyle="link" type="button" alt="cancel" onClick={() => this.setState({toEdit: ""})}>
+                <i className="cancel">cancel</i>
+              </Button>
+            </InputGroup.Button>
+          </InputGroup>
+        </FormGroup>
       </form>
     );
     return editRoom;
@@ -69,21 +79,27 @@ export class RoomList extends Component {
 
   render() {
     const roomForm = (
-      <form onSubmit={this.createRoom}>
-        <input type="text" name="title" value={this.state.title} placeholder="Enter Room Name" onChange={this.handleChange}/>
-        <input type="submit" value="Create"/>
+      <form className="create-room" onSubmit={this.createRoom}>
+        <FormGroup>
+          <InputGroup>
+            <FormControl type="text" name="title" value={this.state.title} placeholder="create new room" onChange={this.handleChange} />
+            <InputGroup.Button>
+              <Button bsStyle="success" type="submit">+</Button>
+            </InputGroup.Button>
+          </InputGroup>
+        </FormGroup>
       </form>
     );
 
     const roomList = this.state.rooms.map((room) =>
-      <li key={room.key}>
+      <li className="room" key={room.key}>
         {this.state.toEdit === room.key ?
           this.editRoom(room)
         :
-        <div>
-          <h3 onClick={(e) => this.selectRoom(room, e)}>{room.title}</h3>
-          <Button bsStyle="primary" bsSize="xsmall" onClick={() => this.setState({toEdit: room.key})}>Edit</Button>
-          <Button bsStyle="danger" bsSize="xsmall" onClick={() => this.deleteRoom(room.key)}>Remove</Button>
+        <div className="roombox">
+          <h3 className="roomname" onClick={(e) => this.selectRoom(room, e)}>{room.title}</h3>
+          <Button bsStyle="link" bsSize="xsmall" onClick={() => this.setState({toEdit: room.key})}>edit</Button>
+          <Button bsStyle="link" bsSize="xsmall" onClick={() => this.deleteRoom(room.key)}>remove</Button>
         </div>
         }
       </li>
@@ -91,8 +107,8 @@ export class RoomList extends Component {
 
     return(
       <div>
-        <h3>chatrooms</h3>
-        <ul>{roomList}</ul>
+        <h2 className="chat-head">chatrooms</h2>
+        <ul className="rooms">{roomList}</ul>
         <div>{roomForm}</div>
       </div>
     );

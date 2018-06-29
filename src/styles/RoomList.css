@@ -1,1 +1,35 @@
+.create-room {
+  position: absolute;
+  left: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
+.chat-head {
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+.rooms {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.roomname {
+  font-weight: 300;
+  color: darkblue;
+}
+
+.roomname:hover {
+  cursor: pointer;
+  line-height: 1.5;
+  color: white;
+}
+
+.roombox Button {
+  opacity: .6;
+}
+
+.roombox Button:hover {
+  opacity: 1;
+}
