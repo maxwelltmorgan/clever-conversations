@@ -5,10 +5,12 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "firebase": "^5.0.4",
+    "moment": "^2.22.2",
     "npm": "^6.1.0",
     "react": "^16.4.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
+    "react-moment": "^0.7.7",
     "react-scripts": "1.1.4"
   },
   "scripts": {

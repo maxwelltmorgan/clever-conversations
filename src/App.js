@@ -61,7 +61,7 @@ activeRoom(room) {
             </Col>
             <Col sm={9} className="main">
 
-              <h1>{this.state.activeRoom.title || "Select Room"}</h1>
+              <h1 className="room-select">{this.state.activeRoom.title || "select a room to begin"}</h1>
               { showMessages ?
                 <MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={this.state.user.displayName} />
                 : null

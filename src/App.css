@@ -20,3 +20,10 @@
   background-color: #F8F8F8;
   border-radius: 0 5px 5px 0;
 }
+
+.room-select {
+  color: #C8C8C8;
+  font-size: 4rem;
+  text-align: center;
+
+}
