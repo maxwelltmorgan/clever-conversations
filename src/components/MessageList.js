@@ -44,7 +44,7 @@ export class MessageList extends Component {
       <form onSubmit={this.updateMessage}>
         <FormGroup>
           <InputGroup>
-            <FormControl type="text" defaultValue={message.content} ref={(input) => this.input = input}/>
+            <FormControl type="text" defaultValue={message.content} inputRef={(input) => this.input = input}/>
             <InputGroup.Button>
               <Button bsStyle="info" type="submit" alt="update">
                 <i className="update">update</i>

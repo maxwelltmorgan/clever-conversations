@@ -37,7 +37,7 @@ export class RoomList extends Component {
       <form onSubmit={this.updateRoom}>
         <FormGroup>
           <InputGroup>
-            <FormControl type="text" defaultValue={room.title} ref={(input) => this.input = input}/>
+            <FormControl type="text" defaultValue={room.title} inputRef={(input) => this.input = input}/>
             <InputGroup.Button>
               <Button bsStyle="info" type="submit" alt="update">
                 <i className="edit">edit</i>
