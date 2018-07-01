@@ -1,4 +1,4 @@
-#Clever Conversations
+# Clever Conversations
 a real-time chat app built with ReactJS
 
 What's used:
