@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
-//import { PageHeader } from 'react-bootstrap';
 import { RoomList } from './components/RoomList.js';
 import { MessageList } from './components/MessageList.js';
 import { User } from './components/User.js';
