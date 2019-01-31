@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.1.2",
+    "bootstrap-theme": "^5.0.0",
     "firebase": "^5.5.3",
     "merge": "^1.2.1",
     "moment": "^2.22.2",
@@ -12,12 +13,18 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.2",
     "react-moment": "^0.8.1",
-    "react-scripts": "2.0.4"
+    "react-scripts": "^2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
