@@ -8,7 +8,7 @@
     "bootstrap-theme": "^5.0.0",
     "firebase": "^5.5.3",
     "merge": "^1.2.1",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "npm": "^6.9.0",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
